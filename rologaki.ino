@@ -76,9 +76,11 @@ void loop()
   {
     Serial.println("Message received from:"); // print to the computer
 
+   // why 20? explain.
     sms.remoteNumber(senderNumber, 20); // assign the sender number to the "senderNumber" variable
     Serial.println(senderNumber); // print the sender number to the computer
     
+   //TODO: Is this a password?
     password = ""; // flush the temporary variable
 
     char c;
@@ -100,6 +102,7 @@ void loop()
       digitalWrite(led2, LOW);
       digitalWrite(led1, HIGH);
       sms.beginSMS(senderNumber); // begin an sms to the sender number
+      // why 6 and not more?
       sms.print(gps.location.lat(), 6); // append the lat to the sms
       sms.print(","); // append a comma
       sms.print(gps.location.lng(), 6); // append the lon to the sms
@@ -112,7 +115,7 @@ void loop()
     }
   }
     t=millis();
-    if(t>=x+2000){
+    if(t>=x+2000){ // why 2000? why not 3000?
     x = millis();
     sms.beginSMS(senderNumber);
     txtmsg += String(gps.location.lat(), 6);
