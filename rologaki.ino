@@ -15,12 +15,14 @@ TinyGPSPlus gps; // The TinyGPS++ object for interfacing with the GPS
 
 AltSoftSerial ss; // The serial connection object to the GPS device
 
+// TODO: it's not a password
 String yourPassword = "Location"; // Put the password here between the ""
 String password; // Temporary variable used for comparison of passwords
 
 GSM gsmAccess; // Initialise the library instances
 GSM_SMS sms;
 
+// TODO: Why so big a list
 char senderNumber[20]="00306947050972"; // Array to hold the number a SMS is retreived from
 // Array which holds the coordinates and the color of the button pressed.
 
@@ -112,7 +114,7 @@ void loop()
     }
   }
     t=millis();
-    if(t>=x+2000){
+    if(t>=x+2000){ // TODO: why 2000?
     x = millis();
     sms.beginSMS(senderNumber);
     txtmsg += String(gps.location.lat(), 6);
